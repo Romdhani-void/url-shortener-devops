@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+dist/
+.angular/
+
+# Environment
+.env
+
+# IDEs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System
+Thumbs.db
+desktop.ini
