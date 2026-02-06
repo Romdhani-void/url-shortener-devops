@@ -64,11 +64,11 @@ jobs:
         with:
           context: ./back
           push: true
-          tags: Romdhani01/url-shortener-back:latest
+          tags: romdhani01/url-shortener-back:latest
 
       - name: Build/Push Frontend Image
         uses: docker/build-push-action@v5
         with:
           context: ./front
           push: true
-          tags: Romdhani01/url-shortener-front:latest
+          tags: romdhani01/url-shortener-front:latest
