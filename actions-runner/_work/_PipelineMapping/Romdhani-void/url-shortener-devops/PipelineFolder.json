@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "Romdhani-void/url-shortener-devops",
+  "pipelineDirectory": "url-shortener-devops",
+  "workspaceDirectory": "url-shortener-devops\\url-shortener-devops",
+  "repositories": {
+    "Romdhani-void/url-shortener-devops": {
+      "repositoryPath": "url-shortener-devops\\url-shortener-devops",
+      "lastRunOn": "02/17/2026 08:16:05 +01:00"
+    }
+  },
+  "lastRunOn": "02/17/2026 08:16:05 +01:00"
+}
