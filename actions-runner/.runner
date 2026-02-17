@@ -1,0 +1,11 @@
+﻿{
+  "agentId": 21,
+  "agentName": "self-hosted",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus11.actions.githubusercontent.com/XcSMkQgsD3ZKfQMRBeieC98kcnKB45ts6USQkpszGzKbHOI0Yv/",
+  "gitHubUrl": "https://github.com/Romdhani-void/url-shortener-devops",
+  "workFolder": "_work",
+  "useV2Flow": true,
+  "serverUrlV2": "https://broker.actions.githubusercontent.com/"
+}
