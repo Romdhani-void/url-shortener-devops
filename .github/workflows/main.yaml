@@ -3,9 +3,9 @@ name: URL Shortener CI/CD
 # 1. TRIGGER: When does this start?
 on:
   push:
-    branches: [ "main" ] # Runs every time you push to the 'main' branch
+    branches: ["main"] # Runs every time you push to the 'main' branch
   pull_request:
-    branches: [ "main" ] # Runs when someone tries to merge code into main
+    branches: ["main"] # Runs when someone tries to merge code into main
 
 jobs:
   # --- JOB 1: BACKEND VALIDATION ---
@@ -18,7 +18,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Install & Build Backend
         run: |
@@ -36,7 +36,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Build Angular App
         run: |
@@ -64,11 +64,31 @@ jobs:
         with:
           context: ./back
           push: true
-          tags: romdhani01/url-shortener-back:latest
+          tags: |
+            romdhani01/url-shortener-back:latest
+            romdhani01/url-shortener-back:${{ github.run_number }}
 
       - name: Build/Push Frontend Image
         uses: docker/build-push-action@v5
         with:
           context: ./front
           push: true
-          tags: romdhani01/url-shortener-front:latest
+          tags: |
+            romdhani01/url-shortener-front:latest
+            romdhani01/url-shortener-front:${{ github.run_number }}
+
+  continuous-deployment:
+    needs: [docker-images]
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Remove old containers
+        run: docker compose down -rmi all
+
+      - name: Pull containers
+        run: docker compose pull
+
+      - name: Deploy locally
+        run: docker compose up -d
