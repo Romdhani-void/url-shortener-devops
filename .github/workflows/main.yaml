@@ -84,8 +84,14 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Remove old containers
-        run: docker compose down --rmi all
+      - name: Hard Cleanup (Total Wipe)
+        shell: powershell
+        run: |
+          docker system prune -af --volumes
+          $containers = docker ps -aq
+          if ($containers) { docker rm -f $containers }
+          $images = docker images -q
+          if ($images) { docker rmi -f $images }
 
       - name: Pull containers
         run: docker compose pull
